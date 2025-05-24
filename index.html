@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scotty Malcolm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<script>
+  (function() {
+    // Simple mobile detection based on user agent
+    const isMobile = /android|iphone|ipad|ipod|windows phone/i.test(navigator.userAgent);
+
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (isMobile && currentPage !== 'phone.html') {
+      // If on mobile and NOT already on phone.html, redirect there
+      window.location.href = 'phone.html';
+    } else if (!isMobile && currentPage !== 'index.html') {
+      // If on desktop and NOT already on index.html, redirect there
+      window.location.href = 'index.html';
+    }
+  })();
+</script>
+
+
+<style>
+.history    { top: -25px; left: 50%; transform: translateX(-50%); }
+  .more       { bottom: -25px; left: 50%; transform: translateX(-50%); }
+
+  .music      { top: 60px; left: -80px; }
+  .art        { top: 130px; left: -100px; }
+  .youtube    { top: 200px; left: -80px; }
+
+  .blog       { top: 60px; right: -80px; }
+  .instagram  { top: 130px; right: -200px; }
+  .lessons    { top: 200px; right: -100px; }
+
+  
+</style>
+<body>
+  <button id="toggleBtn">party mode on</button>
+
+  
+  <marquee behavior="scroll" direction="left" style="padding-top: 1vh;">
+    ,..,.,.,..,..,,..,,.,.,.,...,.SCOTTY MALCOLM,,.,.,.,.,..,.,.,.,..,,,
+  </marquee>
+
+  <div class="wrapper">
+    <div class="center">
+      <img src="gifs/HOMEPAGEGIF.gif" alt="Scotty" />
+      <a href="history.html" class="link history">HISTORY OF SCOTTY</a>
+      <a href="music.html" class="link music">MUSIC</a>
+      <a href="art.html" class="link art">ART</a>
+      <a href="https://www.youtube.com/@scottymalcolm4312/videos" target="_blank" class="link youtube">YOUTUBE</a>
+      <a href="blog.html" class="link blog">BLOG</a>
+      <a href="https://www.instagram.com/frockninja/" target="_blank" class="link instagram">INSTAGRAM</a>
+      <a href="lessons.html" class="link lessons">LESSONS</a>
+      <a href="more.html" class="link more">MORE SCOTTY</a>
+    </div>
+  </div>
+
+  <footer>© 2025 Scotty Malcolm</footer>
+
+</body>
+<script>
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+   
+    // --- Script 2: Toggle background color changing ---
+    (function(){
+      const button = document.getElementById('toggleBtn');
+      if (!button) return;  // safety check
+
+      let intervalId = null;
+
+      function getRandomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+
+      button.addEventListener('click', () => {
+        if (intervalId === null) {
+          intervalId = setInterval(() => {
+            document.body.style.backgroundColor = getRandomColor();
+          }, 400); // 0.4 seconds, matching your original request
+          button.textContent = 'party mode off';
+        } else {
+          clearInterval(intervalId);
+          intervalId = null;
+          button.textContent = 'party mode on';
+        }
+      });
+    })();
+  });
+</script>
+
+
+
+</html>

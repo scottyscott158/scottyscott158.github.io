@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scotty Malcolm</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .art-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1vw;
+    }
+
+    .art-image {
+      width: 30vw;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .art-image {
+        width: 50vw;
+      }
+    }
+
+    .center-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .spacer {
+      margin-bottom: 20vh;
+    }
+
+    .footer-link {
+      width: 50vw;
+      margin: 0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="toggleBtn">party mode on</button>
+  <div class="spacer"></div>
+
+  <marquee behavior="scroll" direction="left">
+    ,..,.,.,..,..,,..,,.,.,.,...,.ART,.,.,.,.,..,.,.,.,..,,,
+  </marquee>
+
+  <div class="spacer"></div>
+
+  <div>
+    <p>
+      I make fliers and cover art for Myself and other people……. 
+      <a href="mailto:scottyscott158@gmail.com">Press here for art inquiry</a>
+    </p>
+  </div>
+
+  <div>
+    <a href="five.html">
+      5 DOLLAR DRAWING<br>
+      5 DOLLAR DRAWING<br>
+      5 DOLLAR DRAWING<br>
+      5 DOLLAR DRAWING<br>
+    </a>
+  </div>
+
+  <!-- 36 images in grid layout -->
+  <div class="art-grid">
+    <img src="art/art1.jpeg" class="art-image">
+    <img src="art/art2.jpeg" class="art-image">
+    <img src="art/art3.jpeg" class="art-image">
+    <img src="art/art4.jpeg" class="art-image">
+    <img src="art/art5.jpeg" class="art-image">
+    <img src="art/art6.jpeg" class="art-image">
+    <img src="art/art7.jpeg" class="art-image">
+    <img src="art/art8.jpeg" class="art-image">
+    <img src="art/art9.jpeg" class="art-image">
+  </div>
+
+  <div class="center-column">
+    <br><img src="gifs/ARTexample.gif">
+    <br><img src="gifs/ARTFlier1.gif">
+  </div>
+
+  <div class="art-grid">
+    <img src="art/art10.jpeg" class="art-image">
+    <img src="art/art11.jpeg" class="art-image">
+    <img src="art/art12.jpeg" class="art-image">
+    <img src="art/art13.jpeg" class="art-image">
+    <img src="art/art14.jpeg" class="art-image">
+    <img src="art/art15.jpeg" class="art-image">
+  </div>
+
+  <div class="center-column">
+    <br><img src="gifs/ARTFlier2.gif">
+    <br><img src="gifs/ARTFlier3.gif">
+  </div>
+
+  <div class="art-grid">
+    <img src="art/art16.jpeg" class="art-image">
+    <img src="art/art17.jpeg" class="art-image">
+    <img src="art/art18.jpeg" class="art-image">
+    <img src="art/art19.jpeg" class="art-image">
+    <img src="art/art20.jpeg" class="art-image">
+    <img src="art/art21.jpeg" class="art-image">
+    <img src="art/art22.jpeg" class="art-image">
+    <img src="art/art23.jpeg" class="art-image">
+    <img src="art/art24.jpeg" class="art-image">
+    <img src="art/art25.jpeg" class="art-image">
+    <img src="art/art26.jpeg" class="art-image">
+  </div>
+
+  <div class="center-column">
+    <br><img src="gifs/ARTFlier4.gif">
+    <br><img src="gifs/ARTFlier5.gif">
+  </div>
+
+  <div class="art-grid">
+    <img src="art/art27.jpeg" class="art-image">
+    <img src="art/art28.jpeg" class="art-image">
+    <img src="art/art29.jpeg" class="art-image">
+    <img src="art/art30.jpeg" class="art-image">
+    <img src="art/art31.jpeg" class="art-image">
+    <img src="art/art32.jpeg" class="art-image">
+    <img src="art/art33.jpeg" class="art-image">
+    <img src="art/art34.jpeg" class="art-image">
+    <img src="art/art35.jpeg" class="art-image">
+    <img src="art/art36.jpeg" class="art-image">
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="footer-link">
+    return <a href="index.html">HOME?</a>
+  </div>
+
+  <footer>© 2025 Scotty Malcolm</footer>
+</body>
+
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+
+</html>

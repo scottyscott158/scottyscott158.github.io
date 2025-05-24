@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <title>Motorcycle Runner</title>
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #fff; }
+    #gameContainer { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 56.25vw; max-width: 177.78vh; max-height: 100vh; background: #fff; overflow: hidden; }
+    canvas { position: absolute; top: 0; left: 0; width:100%; height:100%; z-index:1; }
+    .sprite { position:absolute; top:0; left:0; pointer-events:none; }
+    #player { z-index:3; }
+    #score { position:absolute; top:10px; right:20px; font:bold 24px sans-serif; color:#333; z-index:4; pointer-events:none; }
+    #overlay { position:absolute; top:0; left:0; width:100%; height:100%; display:none; justify-content:center; align-items:center; background:rgba(255,255,255,0.95); z-index:5; }
+    #overlay img { max-width:80%; height:auto; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <button id="toggleBtn">party mode on</button>
+  <div id="gameContainer">
+    <canvas id="game"></canvas>
+    <img id="player" class="sprite" src="game/motorcycle.gif" alt="motorcycle">
+    <div id="score">0</div>
+    <div id="overlay"><img id="overlayImg" alt="overlay"></div>
+  </div>
+
+  <script>
+  (function(){
+    // DOM refs
+    const container = document.getElementById('gameContainer'),
+          canvas    = document.getElementById('game'),
+          ctx       = canvas.getContext('2d'),
+          playerEl  = document.getElementById('player'),
+          scoreEl   = document.getElementById('score'),
+          overlay   = document.getElementById('overlay'),
+          overlayImg= document.getElementById('overlayImg');
+
+    // Browser detection
+    const ua = navigator.userAgent;
+    const isChrome = ua.includes('Chrome') && !ua.includes('Edge') && !ua.includes('OPR');
+    const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+    // Performance modifiers
+    const speedFactor = isChrome ? 2 : 1;
+    const spawnFactor = isSafari ? 1.3 : 2;
+    const deltaFactor = isChrome ? 0.95 : 1;
+    const jumpHeight = isChrome ? 1.4 : 1;
+    const jumpType = isChrome ? 3 : 3;
+
+    // Game state
+    let W, H;
+    let speed = 200;            // base px per second
+    let gravity = 900;          // px per second^2
+    let enemies = [], backgrounds = [];
+    let spawnTimer = 0;
+    const baseSpawn = 2000;     // base milliseconds
+    let spawnInterval = baseSpawn * spawnFactor;
+    const player = { x:50, y:0, w:0, h:0, vy:0, jumps:0, maxJumps:jumpType };
+    let startTime = 0;
+
+    // --- Resize ---
+    function resize(){
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+      const ph = H * 0.25;
+      player.w = player.h = ph;
+      player.x = 50;
+      player.y = H - ph - 20;
+      player.vy = 0;
+      player.jumps = 0;
+      playerEl.style.width  = ph + 'px';
+      playerEl.style.height = ph + 'px';
+      updateSprite(playerEl, player.x, player.y);
+    }
+    window.addEventListener('resize', resize);
+
+    function updateSprite(el, x, y){ el.style.transform = `translate(${x}px, ${y}px)`; }
+
+    // --- Overlay ---
+    function showOverlay(name, ms, cb){
+      overlayImg.src = 'game/' + name;
+      overlay.style.display = 'flex';
+      setTimeout(()=>{ overlay.style.display='none'; if(cb) cb(); }, ms);
+    }
+
+    // --- Input & Double Jump ---
+    function jump(){
+      if(player.jumps < player.maxJumps){
+        player.vy = -600 * jumpHeight;
+        player.jumps++;
+      }
+    }
+    window.addEventListener('keydown', e=>{ if(e.code==='Space') jump(); });
+    window.addEventListener('click', jump);
+    window.addEventListener('touchstart', jump);
+
+    // --- Preload ---
+    const overlayFiles = ['countdown.gif','survive.gif','death.gif','retry.gif'];
+    const imgs = {};
+    let total = overlayFiles.length + 10, loaded = 0;
+    function track(){ if(++loaded === total) startGame(); }
+    overlayFiles.forEach(f=>{ imgs[f] = new Image(); imgs[f].src='game/'+f; imgs[f].onload=track; });
+    for(let i=1;i<=10;i++){ const k=`enemy${i}.png`; imgs[k]=new Image(); imgs[k].src='game/'+k; imgs[k].onload=track; }
+
+    // --- Spawning ---
+    function spawnEnemy(xOff=0){
+      const idx = 1 + Math.floor(Math.random()*10);
+      enemies.push({ img:imgs[`enemy${idx}.png`],
+        x: W + 50 + xOff,
+        y: H - player.h - 20,
+        w: player.h, h: player.h,
+        speed: (speed + Math.random()*100) * speedFactor * (0.7)
+      });
+    }
+    function spawnBG(){
+      const isBird = Math.random()>0.5, num = 1+Math.floor(Math.random()*2);
+      const fname = (isBird ? 'bird' : 'cloud') + num + '.gif';
+      const imgEl = document.createElement('img'), sz = H * 0.2;
+      imgEl.src = 'game/' + fname; imgEl.className = 'sprite';
+      imgEl.style.width = sz + 'px'; imgEl.style.height = 'auto'; imgEl.style.zIndex = 2;
+      container.appendChild(imgEl);
+      backgrounds.push({ el:imgEl, x:W, y:Math.random()*H*0.5, w:sz, speed:(50+Math.random()*25) * speedFactor });
+    }
+
+    // --- Update & Render ---
+    function updateGame(delta){
+      // backgrounds
+      if(Math.random() < 0.009) spawnBG();
+      backgrounds = backgrounds.filter(b=>{
+        b.x -= b.speed * (delta/1000) * speedFactor;
+        updateSprite(b.el, b.x, b.y);
+        if(b.x + b.w < 0){ container.removeChild(b.el); return false; }
+        return true;
+      });
+
+      // enemies & spawn
+      spawnTimer += delta;
+      if(spawnTimer >= spawnInterval){
+        if(Math.random() < 0.3){ const grp = 2 + Math.floor(Math.random()*2), gap = player.h * 0.55;
+          for(let i=0;i<grp;i++) spawnEnemy(i * gap);
+        } else spawnEnemy();
+        spawnTimer -= spawnInterval;
+        spawnInterval = Math.max(600 * spawnFactor, spawnInterval - delta * 0.1);
+      }
+      enemies = enemies.filter(e=>{ e.x -= e.speed * (delta/1000); return e.x + e.w > 0; });
+
+      // player physics
+      player.vy += gravity * (delta/1000);
+      player.y  += player.vy * (delta/1000);
+      if(player.y > H - player.h - 20){
+        player.y = H - player.h - 20;
+        player.vy = 0;
+        player.jumps = 0;  // reset jumps on landing
+      }
+
+      // collision
+      // collision (more forgiving)
+      const pad = 40; // pixels of forgiveness
+      for (let e of enemies) {
+        if (
+          player.x + pad < e.x + e.w - pad &&
+          player.x + player.w - pad > e.x + pad &&
+          player.y + pad < e.y + e.h - pad &&
+          player.y + player.h - pad > e.y + pad
+        ) {
+          showOverlay('death.gif', 2000, () => {
+            overlayImg.src = 'game/retry.gif'; overlay.style.display = 'flex';
+            overlayImg.onclick = () => { overlayImg.onclick = null; overlay.style.display = 'none'; resetGame(); };
+          });
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function render(timestamp){
+      ctx.clearRect(0,0,W,H);
+      enemies.forEach(e=>ctx.drawImage(e.img,e.x,e.y,e.w,e.h));
+      updateSprite(playerEl, player.x, player.y);
+      backgrounds.forEach(b=>updateSprite(b.el, b.x, b.y));
+      scoreEl.textContent = Math.floor((timestamp - startTime) / 100);
+    }
+
+    function gameLoop(timestamp){
+      if(!gameLoop.last) gameLoop.last = timestamp;
+      const rawDelta = timestamp - gameLoop.last;
+      const delta = rawDelta * deltaFactor;
+      gameLoop.last = timestamp;
+      if(updateGame(delta)) render(timestamp);
+      requestAnimationFrame(gameLoop);
+    }
+
+    // --- Start & Reset ---
+    function resetGame(){
+      speed = 200; enemies = [];
+      backgrounds.forEach(b=>container.removeChild(b.el)); backgrounds = [];
+      spawnInterval = baseSpawn * spawnFactor; spawnTimer = 0;
+      player.vy = 0; player.jumps = 0;
+      scoreEl.textContent = '0';
+      startTime = performance.now();
+      showOverlay('countdown.gif',2000, ()=>{ showOverlay('survive.gif',1500, ()=>requestAnimationFrame(gameLoop)); });
+    }
+
+    function startGame(){ resize(); resetGame(); }
+  })();
+  </script>
+</body>
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+
+</html>

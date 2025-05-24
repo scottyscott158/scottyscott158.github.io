@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scotty Malcolm</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    /* alternating two‑column album layout */
+    .album {
+      display: flex;
+      align-items: flex-start;
+      gap: 4vw;
+      margin-bottom: 8vh;
+    }
+    .album .album-image,
+    .album .album-text {
+      flex: 1 1 40%;
+    }
+    .album .album-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .album:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    @media (max-width: 768px) {
+      .album {
+        flex-direction: column !important;
+      }
+      .album .album-image,
+      .album .album-text {
+        flex: 1 1 100%;
+      }
+      .album .album-text {
+        margin-top: 2vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleBtn">party mode on</button>
+  <div style="margin-bottom: 2vh;"></div>
+
+  <marquee behavior="scroll" direction="left">
+    ,..,.,.,..,..,,..,,.,.,.,...,.SCOTTY MALCOLM,,.,.,.,.,..,.,.,.,..,,,
+  </marquee>
+
+  <div style="margin-bottom: 10vh;"></div>
+
+  <div>
+    <p>Scotty Malcolm is Scotty Malcolm’s personal name and is one of his many musical projects.</p>
+  </div>
+
+  <!-- Album 1 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://open.spotify.com/album/6pilpII30bJnyquTWvtWng?si=4I7v7wrZRpmEVRzyRT8GHw&nd=1&dlsi=1ba4d7fab88c486b"><strong>ARTHUR FLOWERS: ELF ROCK (2021)</strong></a>
+      <img src="gifs/SCOTTYarthurflowers.gif" alt="Arthur Flowers: Elf Rock album cover">
+    </div>
+    <div class="album-text">
+      <p>Scotty’s debut album. Created in his hippie era. Some of the songs were written alongside Melody Trautner.</p>
+      <p>“4.0/5” - RateYourMusic.com</p>
+      <p>Included in a list entitled <a href="https://rateyourmusic.com/list/juder/101-diy-albums-you-must-hear-before-you-die/2/">“101 DIY Albums you must hear before you die.”</a> ‘Juder’ says, “Scotty is a visionary… indie pop to heal the soul and clear the mind… fantasy and reality… intertwining. Listen while munching on leaves.”</p>
+      <p>A music video was made for the single “Mirror Man.” Watch <a href="https://www.youtube.com/watch?v=Z-HKX_o73NM" target="_blank">the video</a>. I was 19 then; I’m now 23. Nino Aiyer played drums on most songs. Eoin played bass on 1–2 tracks. Mogi Taylor played sax. Mixed and mastered by Justin Kao.</p>
+    </div>
+  </div>
+
+  <!-- Album 2 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://open.spotify.com/album/1IuWIneoM28VsLNTql5ySe?si=h9pZP-qJREmnMJAxs3Hphg"><strong>THE MIND MELT TAPE (2021)</strong></a>
+      <img src="gifs/SCOTTYmindmelt.gif" alt="The Mind Melt Tape album cover">
+    </div>
+    <div class="album-text">
+      <p>Created in 1 week in Nashville with Rick West, recorded on 8‑track cassette. Sweet album. It’s nice.</p>
+      <p>Blair Tramel of Snõõper created the music video. “I loved the album so much great job guys” – @cheeseballthegreat179</p>
+      <p>“Could you write the lyrics of this song? I want to make a video with Spanish translation.” – @notienesquehacerlo</p>
+      <p>“I miss your upload. Wherever you are, Scott, whatever you’re doing, thank you—your song saved me.” – @dotflow4428</p>
+      <p>Mastered by Justin Kao.</p>
+    </div>
+  </div>
+
+  <!-- Album 3 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://open.spotify.com/album/7n2FhFuFzNJ0TOOXrAnJ1f?si=D5_HAWsIR-O9LtLjyVmRuA"><strong>THE SECRET COLOR (2021)</strong></a>
+      <img src="gifs/SCOTTYsecretcolor.gif" alt="The Secret Color album cover">
+    </div>
+    <div class="album-text">
+      <p>Computer album made in Nashville with Rick in about two weeks. Really fun to make.</p>
+      <p>The first time I drank coffee was during this session—I fell in love with it. Years later it makes me jittery, so now I drink tea instead.</p>
+      <p>Cover art by Nico Hagg. Mixed and mastered by Justin Kao.</p>
+    </div>
+  </div>
+
+  <!-- Album 4 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://open.spotify.com/album/7pD1o3H7dTjCxP6cefFjVy?si=o3C9hB4cSxmi9VwcxUtYOg"><strong>A CRAZY: NAMED MAN (2022)</strong></a>
+      <img src="gifs/SCOTTYcrazy.gif" alt="A Crazy: Named Man album cover">
+    </div>
+    <div class="album-text">
+      <p>Art by Harrison Wyrick. Released by net label Birthdiy in summer 2022. Double video for “Dog” and “Emma vs. The Homework Monster.”</p>
+      <p>“If Scotty Malcolm has a million fans, I am one of them… if none, I am no longer on earth.” – @mae7736</p>
+      <p>“Pretty blatant rip‑off of Arthur Shea's solo work but fun nonetheless.” – ahrin (6/10)</p>
+    </div>
+  </div>
+
+  <!-- Album 5 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://happentwice.com/product/scotty-malcoms-double-album-extravaganza-cassette/"><strong>DOUBLE ALBUM EXTRAVAGANZA (2023)</strong></a>
+      <img src="gifs/double.png" alt="Double Album Extravaganza cassette">
+    </div>
+    <div class="album-text">
+      <p>Compilation cassette on HappenTwice combining Elf Rock and A Crazy: Named Man. Limited release (~25–50 copies).</p>
+    </div>
+  </div>
+
+  <!-- Album 6 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://open.spotify.com/album/7tecOsLi1tsqzwj6PKopr0?si=qRkOhnFRQXGNYVsCaMTi2A"><strong>RAT BASTARD (2023)</strong></a>
+      <img src="gifs/SCOTTYratbastard.gif" alt="Rat Bastard album cover">
+    </div>
+    <div class="album-text">
+      <p>Released while I was in college. Concept based on my alter ego “Rat Bastard” who sabotages my life. Didn’t promote much—still okay.</p>
+    </div>
+  </div>
+
+  <!-- Album 7 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://www.youtube.com/watch?v=kDcUUfHU6RA&t=395s"><strong>THE PLANET OF THE GREAT SCOTTY (2024)</strong></a>
+      <img src="gifs/SCOTTYTheRiseofPlanet.gif" alt="The Planet of the Great Scotty cover">
+    </div>
+    <div class="album-text">
+      <p>Compilation of 2024 songs on cassette and YouTube. Recorded on Logic, Ableton, and 4‑track cassette.</p>
+    </div>
+  </div>
+
+  <!-- Album 8 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://denizenrecords.bandcamp.com/album/to-the-fire-and-flames-2"><strong>CORN: TO THE FIRE AND FLAMES (2024)</strong></a>
+      <img src="gifs/SCOTTYCorn.gif" alt="Corn: To the Fire and Flames cover">
+    </div>
+    <div class="album-text">
+      <p>Recorded end of December on 4‑track cassette after moving to Brooklyn. Breakup album—maybe my best yet. Emo, regrets, mistakes. Released on Bandcamp via Denizen Records.</p>
+    </div>
+  </div>
+
+  <!-- Coming Soon -->
+  <div class="album">
+    <div class="album-image">
+      <!-- no image yet -->
+    </div>
+    <div class="album-text">
+      <p><strong>COMING SOON (?)</strong></p>
+      <p>Working on the next album—an innovative genre that will change the world and amaze you. My magnum opus in the making.</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20vh;"></div>
+
+  <div style="width: 50vw; margin: 0 auto; text-align: center;">
+    return to <a href="music.html">MUSIC?</a>
+  </div>
+  <div style="width: 50vw; margin: 2vh auto; text-align: center;">
+    return <a href="index.html">HOME?</a>
+  </div>
+
+  <footer style="text-align: center; margin-top: 4vh;">© 2025 Scotty Malcolm</footer>
+</body>
+
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+</html>

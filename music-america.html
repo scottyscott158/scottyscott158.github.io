@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scotty Malcolm</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    /* alternating two‑column album layout */
+    .album {
+      display: flex;
+      align-items: flex-start;
+      gap: 4vw;
+      margin-bottom: 8vh;
+    }
+    .album .album-image,
+    .album .album-text {
+      flex: 1 1 40%;
+    }
+    .album .album-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* alternate image/text order */
+    .album:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+    @media (max-width: 768px) {
+      .album {
+        flex-direction: column !important;
+      }
+      .album .album-image,
+      .album .album-text {
+        flex: 1 1 100%;
+      }
+      .album .album-text {
+        margin-top: 2vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleBtn">party mode on</button>
+  <div style="margin-bottom: 2vh;"></div>
+
+  <marquee behavior="scroll" direction="left">
+    ,..,.,.,..,..,,..,,.,.,.,...,.AMERICAN NINJA WARRIORZ,,.,.,.,.,..,.,.,.,..,,,
+  </marquee>
+
+  <div style="margin-bottom: 10vh;"></div>
+
+  <div>
+    <p>
+      Band created in 2023 after meeting the prolific musicians of the renowned organization 
+      <a href="https://denizenrecords.bandcamp.com">DENIZEN RECORDS.</a> Began so I could embarrass myself.
+      All albums recorded on tape. Watch us live on YouTube.
+    </p>
+  </div>
+
+  <!-- Album 1 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://denizenrecords.bandcamp.com/album/das-booty"><strong>DAS BOOTY (2023)</strong></a>
+      <img src="gifs/ANWDasBooty.gif" alt="Das Booty album cover">
+    </div>
+    <div class="album-text">
+      <p>Recorded with Bradford Barker III,<br>
+      in his apartment in Cambridge, MA,<br>
+      on Tascam Portastudio 424 MKi.<br>
+      Mostly acoustic album.<br>
+      Scotty Malcolm’s debut on the historical online landmark Denizen Records.</p>
+      <p><em>Includes hit tracks:</em><br>
+      “MarioKart Tournament”<br>
+      “If I Wuz Sexy”<br>
+      “There are Girls I Want To Have Sex With”</p>
+      <p>Bandcamp exclusive.<br>
+      1 tape replication exists.</p>
+    </div>
+  </div>
+
+  <!-- Album 2 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://denizenrecords.bandcamp.com/album/ballin"><strong>BALLIN (2023)</strong></a>
+      <img src="gifs/ANWBallin.gif" alt="Ballin album cover">
+    </div>
+    <div class="album-text">
+      <p>Follow-up to “Das Booty.”<br>
+      Recorded alone,<br>
+      except Alice Cohen on drums (“Like A Fool”)<br>
+      and a guest vocal by my ex.<br>
+      It was an okay album; I feel alright about it.</p>
+      <p>I can picture this time clearly:<br>
+      three days in Cape Cod at summer’s start<br>
+      with my ex and her family,<br>
+      then back home to make this record.</p>
+      <p>Bandcamp exclusive.<br>
+      1 tape replication exists.</p>
+    </div>
+  </div>
+
+  <!-- Album 3 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://denizenrecords.bandcamp.com/album/emma-tremont-the-1st"><strong>EMMA TREMONT THE 1ST (2023)</strong></a>
+      <img src="gifs/ANWEmma....gif" alt="Emma Tremont the 1st album cover">
+    </div>
+    <div class="album-text">
+      <p>Recorded that same summer after “Ballin,”<br>
+      dedicated to my ex-lover.<br>
+      I think this one’s pretty good.</p>
+      <p>Bandcamp exclusive.</p>
+    </div>
+  </div>
+
+  <!-- Album 4 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://denizenrecords.bandcamp.com/album/heart-of-a-wolf-soul-of-a-dragon"><strong>HEART OF A WOLF, SOUL OF A DRAGON (2024)</strong></a>
+      <img src="gifs/ANWHeartofaWolf.gif" alt="Heart of a Wolf, Soul of a Dragon album cover">
+    </div>
+    <div class="album-text">
+      <p>First ninja album with a full band.<br>
+      Recorded in the basement of Pasta Planet<br>
+      on Gavin Caine’s 8‑track reel‑to‑reel.<br>
+      Lineup: Scotty (guitar/vocals), Colin Ratcliff (guitar),<br>
+      Aidan Shapero (drums), Jacob Lopez (bass).<br>
+      “Gooner Heaven” by Dew Myron & Gavin Caine.</p>
+      <p>“4.5/5” – RateYourMusic.com</p>
+      <p><em>“One of the funniest records ever made: sophomoric, crude, onanist, and it rocks!”</em><br>
+      – sigfried</p>
+      <p>Released worldwide on Spotify, iTunes, Bandcamp.</p>
+    </div>
+  </div>
+
+  <!-- Album 5 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://denizenrecords.bandcamp.com/album/death-to-shoegaze"><strong>DEATH TO SHOEGAZE (2024)</strong></a>
+      <img src="gifs/ANWDeathtoShoegaze.gif" alt="Death to Shoegaze album cover">
+    </div>
+    <div class="album-text">
+      <p>Final week before moving from Boston to NYC.<br>
+      Recorded in Berklee practice rooms and Colin’s apartment.<br>
+      Engineered on Colin’s Tascam Portastudio 424 MKiii.<br>
+      Hit single “we Fucked”—watch the video <a href="https://www.youtube.com/watch?v=K7o251ZvuQs" target="_blank">here</a>.</p>
+      <p>“4.25/5” – RateYourMusic</p>
+      <p><em>“Dirty, revolting sounds critiquing Boston’s gentrified DIY scene while preserving fuck‑shit stylings and gung‑ho songwriting.”</em><br>
+      – The Big Dig</p>
+      <p>Released worldwide on Spotify, iTunes, Bandcamp.</p>
+    </div>
+  </div>
+
+  <!-- Compilation -->
+  <div class="album">
+    <div class="album-image">
+      <strong>TAPE COMPILATION (2025)</strong>
+      <img src="gifs/anwcomp.png" alt="Tape Compilation cover">
+    </div>
+    <div class="album-text">
+      <p>Includes albums:</p>
+      <p>“Heart of a Wolf, Soul of a Dragon”<br>
+      “Death to Shoegaze”</p>
+      <p>25 tapes were created—all gone now.</p>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 20vh;"></div>
+
+  <div style="width: 50vw; margin: 0 auto; text-align: center;">
+    return to <a href="music.html">MUSIC?</a>
+  </div>
+  <div style="width: 50vw; margin: 2vh auto; text-align: center;">
+    return to <a href="index.html">HOME?</a>
+  </div>
+
+  <footer style="text-align: center; margin-top: 4vh;">© 2025 Scotty Malcolm</footer>
+</body>
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+
+
+</html>

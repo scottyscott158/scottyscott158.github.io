@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scotty Malcolm</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+
+</head>
+<body>
+    <div style="margin-bottom: 20vh;"></div>
+
+    <button id="toggleBtn">party mode on</button>
+  <marquee behavior="scroll" direction="left">
+    ,..,.,.,..,..,,..,,.,.,.,...,.5 DOLLAR DRAWINGS,.,.,.,.,..,.,.,.,..,,,
+  </marquee>
+
+  <div style="margin-bottom: 20vh;"></div>
+
+  <div>
+    <p>
+        I draw people for money, 
+  I usually do it at washington square park,
+I will do it on the internet too
+For 5 dollars
+<a href="mailto:scottyscott158@gmail.com">Email me</a> a picture of you
+Send money to my
+Venmo
+ @scotty_malcolm
+The profile picture is 
+Apes,
+   I like tips and
+Extra money
+</p>
+  </div>
+
+<div>
+  <img src="gifs/5DOLLARDRAW.gif" >
+</div>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1vw;">
+  <img src="5dollah/drawing1.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing2.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing3.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing4.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing5.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing6.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing7.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing8.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing9.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing10.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing11.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing12.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing13.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing14.jpeg" style="width:30vw; height:auto;">
+  <img src="5dollah/drawing15.jpeg" style="width:30vw; height:auto;">
+</div>
+
+
+  <div style="margin-bottom: 20vh;"></div>
+
+
+  <div style="width: 50vw; margin: 0 auto;">
+    return <a href="index.html">HOME?</a>
+
+  </div>
+
+
+  
+
+
+  
+  <footer>© 2025 Scotty Malcolm</footer>
+
+</body>
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+</html>

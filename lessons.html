@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scotty Malcolm</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    .lesson-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 4vw;
+      margin: 2vh 0;
+      flex-wrap: wrap;
+    }
+
+    .lesson-text {
+      max-width: 40%;
+    }
+
+    .lesson-text p {
+      margin: 0.5em 0;
+    }
+
+    .lesson-image img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .lesson-container {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+
+      .lesson-text, .lesson-image {
+        max-width: 90%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="margin-bottom: 2vh;"></div>
+  <button id="toggleBtn">party mode on</button>
+
+  <marquee behavior="scroll" direction="left">
+    ,..,.,.,..,..,,..,,.,.,.,...,.LESSONS,.,.,.,.,..,.,.,.,..,,,
+  </marquee>
+
+  <div class="lesson-container">
+    <div class="lesson-text">
+      <p>I teach <a href="mailto:scottyscott158@gmail.com">guitar lessons</a>,</p>
+      <p>I teach <a href="mailto:scottyscott158@gmail.com">bass lessons</a>,</p>
+      <p>I teach you how to <a href="mailto:scottyscott158@gmail.com">write a song</a>,</p>
+      <p>I teach you how to <a href="mailto:scottyscott158@gmail.com">read a song</a></p>
+      <p>I teach you how to <a href="mailto:scottyscott158@gmail.com">hear a song</a></p>
+      <p>I teach you to <a href="mailto:scottyscott158@gmail.com">record</a></p>
+      <p>I teach you to <a href="mailto:scottyscott158@gmail.com">produce</a></p>
+      <p>I teach you to <a href="mailto:scottyscott158@gmail.com">be better</a></p>
+      <p>I teach you how to <a href="mailto:scottyscott158@gmail.com">not get worse</a></p>
+      <p>I teach you <a href="mailto:scottyscott158@gmail.com">better than I know</a></p>
+      <p>I teach you <a href="mailto:scottyscott158@gmail.com">anything you want</a></p>
+      <p>I teach <a href="mailto:scottyscott158@gmail.com">inspiration</a></p>
+      <p>I have <a href="mailto:scottyscott158@gmail.com">many students</a></p>
+      <p>They are <a href="mailto:scottyscott158@gmail.com">all happy</a></p>
+      <p>Their lives are going <a href="mailto:scottyscott158@gmail.com">much better now</a></p>
+      <p>I wish I could teach me so I could<br>
+      Go <a href="mailto:scottyscott158@gmail.com">better</a></p>
+      <p><a href="mailto:scottyscott158@gmail.com">Learn Now</a></p>
+      <p><a href="mailto:scottyscott158@gmail.com">Learn Now</a></p>
+      <p><a href="mailto:scottyscott158@gmail.com">Learn Now</a></p>
+      <p><a href="mailto:scottyscott158@gmail.com">Learn Now</a></p>
+      <p><a href="mailto:scottyscott158@gmail.com">Learn Now</a></p>
+      <p><a href="mailto:scottyscott158@gmail.com">Learn Now</a></p>
+      <p><a href="mailto:scottyscott158@gmail.com">Learn Now</a></p>
+    </div>
+
+    <div class="lesson-image">
+      <img src="gifs/LESSON.gif" alt="Lesson gif">
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 4vh;">
+    <a href="https://www.google.com/search?client=safari&rls=en&q=mistake&ie=UTF-8&oe=UTF-8">accept mediocrity</a>
+  </div>
+
+  <div style="margin: 5vh auto; width: 50vw; text-align: center;">
+    return <a href="index.html">HOME?</a>
+  </div>
+
+  <footer style="text-align: center;">© 2025 Scotty Malcolm</footer>
+</body>
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+
+
+</html>
