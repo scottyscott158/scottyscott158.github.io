@@ -15,3 +15,39 @@
       <img src="gifs/ABOUT.gif" alt="about gif">
     </div>
   </div>
+
+   <div style="margin: 5vh auto; width: 50vw; text-align: center;">
+    return <a href="index.html">HOME?</a>
+  </div>
+
+  <footer style="text-align: center;">© 2025 Scotty Malcolm</footer>
+</body>
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+
+
+</html>
