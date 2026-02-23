@@ -1,1 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scotty Malcolm</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    /* alternating two‑column album layout */
+    .album {
+      display: flex;
+      align-items: flex-start;
+      gap: 4vw;
+      margin-bottom: 8vh;
+    }
+    .album .album-image,
+    .album .album-text {
+      flex: 1 1 40%;
+    }
+    .album .album-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* alternate image/text order */
+    .album:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+    @media (max-width: 768px) {
+      .album {
+        flex-direction: column !important;
+      }
+      .album .album-image,
+      .album .album-text {
+        flex: 1 1 100%;
+      }
+      .album .album-text {
+        margin-top: 2vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleBtn">party mode on</button>
+  <div style="margin-bottom: 2vh;"></div>
 
+  <marquee behavior="scroll" direction="left">
+    ,..,.,.,..,..,,..,,.,.,.,...,.THE GUPPIES,,.,.,.,.,..,.,.,.,..,,,
+  </marquee>
+
+  <div style="margin-bottom: 10vh;"></div>
+
+  <div>
+    <p>
+      ...A supergroup that was formed in 2025 after AMERICAN NINJA WARRIORZ 
+      toured alongside DINOS and combined forces.
+         They know things that you dont.
+    </p>
+  </div>
+
+  <!-- Album 1 -->
+  <div class="album">
+    <div class="album-image">
+      <a href="https://theguppiesreal.bandcamp.com/album/the-answers-to-which-we-do-not-know-the-questions"><strong>THE ANSWERS TO WHICH WE DO NOT KNOW THE QUESTIONS (2025)</strong></a>
+      <img src="gifs/GUPANSWERS.gif" alt="GUPPIES album 1 cover">
+    </div>
+  </div>
+    <div class="album-text">
+      <p> I loved making this album, I think it is good</p>
+      <p>"The Answers To Which We Do Not Know the Questions is quite the album title for quite the record. The Guppies are a Brooklyn quartet. What else can I tell you about them? Not much, other than the album cover suggests they enjoy sitting around naked together. But I digress. These 14 songs, recorded in just two days on an 8-track Tascam, show a band with a natural gift for scrappy, garagey pop’n’roll that’s constantly shifting lanes.
+The Guppies bounce from catchy punk rock to trash-country detours to surprisingly cool instrumentals. It’s quirky, it’s messy, and it’s absolutely a blast. The kind of chaos that feels less like a place to live and more like a place you’d visit just to hear wild story after wild story.
+Disclaimer: to get the full Guppies experience, don’t stop after a couple of tracks—let the whole thing unspool. Cassette out now on 4 Your Ears."
+        <a href="https://addtowantlist.com/index.php/2025/12/02/album-review-the-guppies-the-answers-to-which-we-do-not-know-the-questions/">-Add To Wantlist</a>. </p>
+    </div>
+  </div>
+
+
+  <div style="margin-bottom: 20vh;"></div>
+
+  <div style="width: 50vw; margin: 0 auto; text-align: center;">
+    return to <a href="music.html">MUSIC?</a>
+  </div>
+  <div style="width: 50vw; margin: 2vh auto; text-align: center;">
+    return to <a href="index.html">HOME?</a>
+  </div>
+
+  <footer style="text-align: center; margin-top: 4vh;">© 2025 Scotty Malcolm</footer>
+</body>
+
+
+<script>
+  const button = document.getElementById('toggleBtn');
+  let intervalId = null;
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  button.addEventListener('click', () => {
+    if (intervalId === null) {
+      intervalId = setInterval(() => {
+        document.body.style.backgroundColor = getRandomColor();
+      }, 200);
+      button.textContent = 'party mode off';
+    } else {
+      clearInterval(intervalId);
+      intervalId = null;
+      button.textContent = 'party mode on';
+    }
+  });
+</script>
+
+</html>
